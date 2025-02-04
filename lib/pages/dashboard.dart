@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sinhgadapp/components/long_button.dart';
 import 'package:sinhgadapp/components/my_drawer.dart';
+import 'package:sinhgadapp/pages/additional_fees.dart';
+import 'package:sinhgadapp/pages/payment_history.dart';
+import 'package:sinhgadapp/pages/pending_fees.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -10,7 +13,7 @@ class Dashboard extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF1F6F9),
       appBar: AppBar(
-        title: const Text('D A S H B O A R D'),
+        title: const Text('DASHBOARD'),
         centerTitle: false,
         backgroundColor: const Color(0xFF212A3E),
         foregroundColor: Colors.white,
@@ -18,7 +21,7 @@ class Dashboard extends StatelessWidget {
       drawer: const MyDrawer(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
               const SizedBox(height: 30),
@@ -35,6 +38,7 @@ class Dashboard extends StatelessWidget {
               //Profile pic and name etc information
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //Profile pic
                   Container(
@@ -132,19 +136,35 @@ class Dashboard extends StatelessWidget {
               LongButton(
                 title: 'Pending fees',
                 image: Image.asset('assets/sandTime.png'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PendingFees()),
+                  );
+                },
               ),
               const SizedBox(height: 30),
               LongButton(
                 title: 'Additional Fees',
                 image: Image.asset('assets/funds.png'),
-                
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AdditionalFees()),
+                  );
+                },
               ),
 
               const SizedBox(height: 30),
               LongButton(
                 title: 'Payment History',
                 image: Image.asset('assets/history.png'),
-                
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentHistory()),
+                  );
+                },
               ),
             ],
           ),
