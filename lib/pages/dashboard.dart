@@ -1,0 +1,155 @@
+import 'package:flutter/material.dart';
+import 'package:sinhgadapp/components/long_button.dart';
+import 'package:sinhgadapp/components/my_drawer.dart';
+
+class Dashboard extends StatelessWidget {
+  const Dashboard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFF1F6F9),
+      appBar: AppBar(
+        title: const Text('D A S H B O A R D'),
+        centerTitle: false,
+        backgroundColor: const Color(0xFF212A3E),
+        foregroundColor: Colors.white,
+      ),
+      drawer: const MyDrawer(),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50),
+          child: Column(
+            children: [
+              const SizedBox(height: 30),
+              //sinhgad students text
+              const Text(
+                "SINHGAD INSTITUTE OF TECHNOLOGY",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              //Profile pic and name etc information
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //Profile pic
+                  Container(
+                    height: 130,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF1F6F9),
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 120, 203, 250), // Shadow color
+                          // spreadRadius: 10, // Spread radius
+                          blurRadius: 15, // Blur radius
+                          offset: Offset(7, 7), // Shadow position (x, y)
+                        ),
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 120, 203, 250), // Shadow color
+                          // spreadRadius: 10, // Spread radius
+                          blurRadius: 15, // Blur radius
+                          offset: Offset(-7, -7), // Shadow position (x, y)
+                        ),
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 120, 203, 250), // Shadow color
+                          // spreadRadius: 10, // Spread radius
+                          blurRadius: 15, // Blur radius
+                          offset: Offset(-7, 7), // Shadow position (x, y)
+                        ),
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 120, 203, 250), // Shadow color
+                          // spreadRadius: 10, // Spread radius
+                          blurRadius: 15, // Blur radius
+                          offset: Offset(7, -7), // Shadow position (x, y)
+                        ),
+
+                        // BoxShadow(
+                        //   color: Color.fromARGB(255, 90, 193, 252),
+                        //   blurRadius: 25,
+                        // )
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 100,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 25,
+                  ),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "ANUJ SHARMA",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "2022-2025",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "7887985748",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        "SIT, Lonavala",
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              const SizedBox(height: 30),
+              Text(
+                'Sharma Anuj Suresh/2222/LSIT/000001',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[700],
+                ),
+              ),
+              const SizedBox(height: 60),
+              LongButton(
+                title: 'Pending fees',
+                image: Image.asset('assets/sandTime.png'),
+              ),
+              const SizedBox(height: 30),
+              LongButton(
+                title: 'Additional Fees',
+                image: Image.asset('assets/funds.png'),
+                
+              ),
+
+              const SizedBox(height: 30),
+              LongButton(
+                title: 'Payment History',
+                image: Image.asset('assets/history.png'),
+                
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
