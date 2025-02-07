@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sinhgadapp/components/my_drawer.dart';
+import 'package:sinhgadapp/components/payment_tile.dart';
+import 'package:sinhgadapp/pdf/save_and_open_pdf.dart';
+import 'package:sinhgadapp/pdf/simple_pdf_api.dart';
 
 class FeeReceipt extends StatefulWidget {
   const FeeReceipt({super.key});
@@ -19,17 +22,35 @@ class _FeeReceiptState extends State<FeeReceipt> {
         backgroundColor: const Color(0xFF212A3E),
         foregroundColor: Colors.white,
       ),
-      drawer: const MyDrawer(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.only(
+            left: 5,
+            right: 5,
+          ),
           child: Column(
             children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('Pay'),
+              //tiles for pdf
+              PaymentTile(
+                onTap: () async {
+                  final simplePdfFile =
+                      await SimplePdfApi.generateSimpleTextPdf(
+                    'Receipt No. : LSIT/00001',
+                    'Paid Date: 2024/01/01',
+                  );
+                  SaveAndOpenPdf.openPdf(simplePdfFile);
+                },
               ),
-              // Add your widgets here
+              PaymentTile(
+                onTap: () async {
+                  final simplePdfFile =
+                      await SimplePdfApi.generateSimpleTextPdf(
+                    'Receipt No. : LSIT/00001',
+                    'Paid Date: 2024/01/01',
+                  );
+                  SaveAndOpenPdf.openPdf(simplePdfFile);
+                },
+              ),
             ],
           ),
         ),

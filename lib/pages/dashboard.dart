@@ -1,12 +1,56 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sinhgadapp/components/long_button.dart';
 import 'package:sinhgadapp/components/my_drawer.dart';
 import 'package:sinhgadapp/pages/additional_fees.dart';
 import 'package:sinhgadapp/pages/payment_history.dart';
 import 'package:sinhgadapp/pages/pending_fees.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  File? _imageFile;
+
+  //pick image
+  Future pickImage() async {
+    final ImagePicker picker = ImagePicker();
+
+    //pick from gallery
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    //upload image preview
+    if (image != null) {
+      setState(() {
+        _imageFile = File(image.path);
+      });
+    }
+  }
+
+  //upload
+  Future uploadImage() async {
+    if (_imageFile == null) return;
+    //generate file name
+    final fileName = DateTime.now().millisecondsSinceEpoch.toString();
+    final path = 'uploads/$fileName';
+
+    await Supabase.instance.client.storage
+        .from('images')
+        .upload(path, _imageFile!)
+        .then((value) => ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Image uploaded successfully'),
+              ),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,52 +85,73 @@ class Dashboard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //Profile pic
-                  Container(
-                    height: 130,
-                    width: 130,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF1F6F9),
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Color.fromARGB(
-                              255, 120, 203, 250), // Shadow color
-                          // spreadRadius: 10, // Spread radius
-                          blurRadius: 15, // Blur radius
-                          offset: Offset(7, 7), // Shadow position (x, y)
-                        ),
-                        BoxShadow(
-                          color: Color.fromARGB(
-                              255, 120, 203, 250), // Shadow color
-                          // spreadRadius: 10, // Spread radius
-                          blurRadius: 15, // Blur radius
-                          offset: Offset(-7, -7), // Shadow position (x, y)
-                        ),
-                        BoxShadow(
-                          color: Color.fromARGB(
-                              255, 120, 203, 250), // Shadow color
-                          // spreadRadius: 10, // Spread radius
-                          blurRadius: 15, // Blur radius
-                          offset: Offset(-7, 7), // Shadow position (x, y)
-                        ),
-                        BoxShadow(
-                          color: Color.fromARGB(
-                              255, 120, 203, 250), // Shadow color
-                          // spreadRadius: 10, // Spread radius
-                          blurRadius: 15, // Blur radius
-                          offset: Offset(7, -7), // Shadow position (x, y)
-                        ),
+                  GestureDetector(
+                    onTap: () {
+                      pickImage();
+                      uploadImage();
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 130,
+                          width: 130,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF1F6F9),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color.fromARGB(
+                                    255, 120, 203, 250), // Shadow color
+                                // spreadRadius: 10, // Spread radius
+                                blurRadius: 15, // Blur radius
+                                offset: Offset(7, 7), // Shadow position (x, y)
+                              ),
+                              BoxShadow(
+                                color: Color.fromARGB(
+                                    255, 120, 203, 250), // Shadow color
+                                // spreadRadius: 10, // Spread radius
+                                blurRadius: 15, // Blur radius
+                                offset:
+                                    Offset(-7, -7), // Shadow position (x, y)
+                              ),
+                              BoxShadow(
+                                color: Color.fromARGB(
+                                    255, 120, 203, 250), // Shadow color
+                                // spreadRadius: 10, // Spread radius
+                                blurRadius: 15, // Blur radius
+                                offset: Offset(-7, 7), // Shadow position (x, y)
+                              ),
+                              BoxShadow(
+                                color: Color.fromARGB(
+                                    255, 120, 203, 250), // Shadow color
+                                // spreadRadius: 10, // Spread radius
+                                blurRadius: 15, // Blur radius
+                                offset: Offset(7, -7), // Shadow position (x, y)
+                              ),
 
-                        // BoxShadow(
-                        //   color: Color.fromARGB(255, 90, 193, 252),
-                        //   blurRadius: 25,
-                        // )
+                              // BoxShadow(
+                              //   color: Color.fromARGB(255, 90, 193, 252),
+                              //   blurRadius: 25,
+                              // )
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: _imageFile != null
+                                ? Image.file(
+                                    _imageFile!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : const Center(
+                                    child: const Icon(
+                                      Icons.person,
+                                      size: 100,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                          ),
+                        )
                       ],
-                    ),
-                    child: const Icon(
-                      Icons.person,
-                      size: 100,
-                      color: Colors.grey,
                     ),
                   ),
                   const SizedBox(

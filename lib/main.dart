@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sinhgadapp/pages/initial_page.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 // import 'package:sinhgad_app/pages/initial_page.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
-  //supabase setup
-  // await Supabase.initialize(
-  //   anonKey:
-  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwZmRsZGZwemJ0ZWxxanZtd3drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzIzNDM2ODQsImV4cCI6MjA0NzkxOTY4NH0.e2cBUm4tXTnb4AcYzY8MQgONl-vbxv93Qmlrc7_m5Cg",
-  //   url: "https://ppfdldfpzbtelqjvmwwk.supabase.co",
-  // );
+  await Supabase.initialize(
+    url: 'https://tmlnidltpfwbjsigzrbn.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtbG5pZGx0cGZ3YmpzaWd6cmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg3NjE0MTUsImV4cCI6MjA1NDMzNzQxNX0.99BYAog1-H2fEjaodDgyuA6jF4wOngze5_huz7HajzE',
+  );
   runApp(const MyApp());
 }
 
