@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sinhgadapp/components/long_button.dart';
-import 'package:sinhgadapp/components/my_drawer.dart';
+// import 'package:sinhgadapp/components/my_drawer.dart';
 import 'package:sinhgadapp/pages/fee_receipt.dart';
 import 'package:sinhgadapp/pages/provisional_fees_receipt.dart';
 
@@ -22,7 +22,7 @@ class _PaymentHistoryState extends State<PaymentHistory> {
         backgroundColor: const Color(0xFF212A3E),
         foregroundColor: Colors.white,
       ),
-      drawer: const MyDrawer(),
+    
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),

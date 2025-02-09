@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sinhgadapp/components/long_button.dart';
 import 'package:sinhgadapp/components/my_drawer.dart';
 import 'package:sinhgadapp/pages/additional_fees.dart';

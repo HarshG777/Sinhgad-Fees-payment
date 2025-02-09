@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sinhgadapp/components/my_drawer.dart';
+// import 'package:sinhgadapp/components/my_drawer.dart';
 import 'package:sinhgadapp/components/payment_tile.dart';
 import 'package:sinhgadapp/pdf/save_and_open_pdf.dart';
 import 'package:sinhgadapp/pdf/simple_pdf_api.dart';
@@ -33,21 +33,36 @@ class _FeeReceiptState extends State<FeeReceipt> {
               //tiles for pdf
               PaymentTile(
                 onTap: () async {
-                  final simplePdfFile =
-                      await SimplePdfApi.generateSimpleTextPdf(
-                    'Receipt No. : LSIT/00001',
-                    'Paid Date: 2024/01/01',
-                  );
+                  final simplePdfFile = await SimplePdfApi.generatePdf(
+                      12000, 25000, 120, 1000, 300);
                   SaveAndOpenPdf.openPdf(simplePdfFile);
                 },
               ),
               PaymentTile(
                 onTap: () async {
-                  final simplePdfFile =
-                      await SimplePdfApi.generateSimpleTextPdf(
-                    'Receipt No. : LSIT/00001',
-                    'Paid Date: 2024/01/01',
-                  );
+                  final simplePdfFile = await SimplePdfApi.generatePdf(
+                      12000, 25000, 120, 1000, 300);
+                  SaveAndOpenPdf.openPdf(simplePdfFile);
+                },
+              ),
+              PaymentTile(
+                onTap: () async {
+                  final simplePdfFile = await SimplePdfApi.generatePdf(
+                      12000, 25000, 120, 1000, 300);
+                  SaveAndOpenPdf.openPdf(simplePdfFile);
+                },
+              ),
+              PaymentTile(
+                onTap: () async {
+                  final simplePdfFile = await SimplePdfApi.generatePdf(
+                      12000, 25000, 120, 1000, 300);
+                  SaveAndOpenPdf.openPdf(simplePdfFile);
+                },
+              ),
+              PaymentTile(
+                onTap: () async {
+                  final simplePdfFile = await SimplePdfApi.generatePdf(
+                      12000, 25000, 120, 1000, 300);
                   SaveAndOpenPdf.openPdf(simplePdfFile);
                 },
               ),

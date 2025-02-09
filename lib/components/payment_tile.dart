@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 
 class PaymentTile extends StatefulWidget {
   final VoidCallback onTap;
-  const PaymentTile({
-    super.key,
-    required this.onTap
-  });
+  const PaymentTile({super.key, required this.onTap});
 
   @override
   State<PaymentTile> createState() => _PaymentTileState();
@@ -75,11 +72,11 @@ class _PaymentTileState extends State<PaymentTile> {
                           onTap: widget.onTap,
                         ),
                         const Spacer(),
-                        const Text(
-                          "Amount: 70000",
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
+                        // const Text(
+                        //   "Amount: 70000",
+                        //   style: TextStyle(
+                        //       fontSize: 16, fontWeight: FontWeight.bold),
+                        // ),
                       ],
                     )
                   ],
