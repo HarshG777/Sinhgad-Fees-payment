@@ -1,10 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sinhgadapp/firebase_options.dart';
 import 'package:sinhgadapp/pages/initial_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 // import 'package:sinhgad_app/pages/initial_page.dart';
 // import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Supabase.initialize(
     url: 'https://tmlnidltpfwbjsigzrbn.supabase.co',
     anonKey:

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "971843218402",
+    "project_id": "sinhgadapp",
+    "storage_bucket": "sinhgadapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971843218402:android:129c63eadeb1882df7e7bb",
+        "android_client_info": {
+          "package_name": "com.example.sinhgadapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJK1mj2PzPAAGc-FNmLzt45hCltX6_OG4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
